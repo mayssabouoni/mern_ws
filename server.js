@@ -1,7 +1,9 @@
 const express = require("express");
 const DBconnect = require("./config/connectDB");
+var cors = require("cors");
 
 const app = express();
+app.use(cors());
 DBconnect();
 //Middlewares
 app.use(express.json());
