@@ -2,9 +2,15 @@ import {
   GET_CONTACTS_FAIL,
   GET_CONTACTS_LOAD,
   GET_CONTACTS_SUCCESS,
+  GET_ONE_CONTACT_SUCCESS,
 } from "../constants/contacts";
 
-const initialeState = { contacts: [], error: null, loadContacts: false };
+const initialeState = {
+  contacts: [],
+  error: null,
+  loadContacts: false,
+  contact: {},
+};
 
 export const contactReducer = (state = initialeState, { type, payload }) => {
   switch (type) {
@@ -16,6 +22,8 @@ export const contactReducer = (state = initialeState, { type, payload }) => {
 
     case GET_CONTACTS_FAIL:
       return { ...state, error: payload, loadContacts: false };
+    case GET_ONE_CONTACT_SUCCESS:
+      return { ...state, contact: payload };
 
     default:
       return state;
